@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.ui.theme" value="simple" />
+
+	<package name="adminusers" namespace="" extends="struts-default">
+
+        <action name = "loginaction" 
+         class = "com.action.LoginAction"
+         method = "execute">
+         <result name = "success">/success.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
+       <action name = "altaIni" 
+         class = "com.action.AltaAction" 
+         method = "init">
+         <result name= "input"> index.jsp </result>
+         <result name = "next">/altas/altaIni.jsp</result>
+      </action>
+      
+       <action name = "alta" 
+         class = "com.action.AltaAction" 
+         method = "execute">
+         <result name = "input">/altas/altaIni.jsp</result>
+         <result name = "next">/altas/altaExitosa.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
+      <action name = "bajaIni" 
+         class = "com.action.BajaAction" 
+         method = "init">
+         <result name= "input"> index.jsp </result>
+         <result name = "next">/bajas/bajaIni.jsp</result>
+      </action>
+      
+       <action name = "baja" 
+         class = "com.action.BajaAction" 
+         method = "execute">
+         <result name = "input">/bajas/bajaIni.jsp</result>
+         <result name = "next">/bajas/bajaExitosa.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
+       <action name = "cambioIni" 
+         class = "com.action.CambioAction" 
+         method = "init">
+         <result name= "input"> index.jsp </result>
+         <result name = "next">/cambios/cambioIni.jsp</result>
+      </action>
+      
+       <action name = "cambio" 
+         class = "com.action.CambioAction" 
+         method = "validation">
+         <result name = "input">/cambios/cambioIni.jsp</result>
+         <result name = "next">/cambios/cambioDatos.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
+      <action name = "cambioFinal" 
+         class = "com.action.CambioAction" 
+         method = "execute">
+         <result name = "input">/cambios/cambioDatos.jsp</result>
+         <result name = "next">/cambios/cambioExitoso.jsp</result>
+      </action>
+      
+      <action name = "consultaPIni" 
+         class = "com.action.ConsultaAction" 
+         method = "init">
+          <result name = "input">index.jsp</result>
+         <result name = "next">/consultas/consultaP.jsp</result>
+      </action>
+      
+      <action name = "consultaParticular" 
+         class = "com.action.ConsultaAction" 
+         method = "executeP">
+         <result name = "input">/consultas/consultaP.jsp</result>
+         <result name = "next">/consultas/consultaExitosa.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
+      
+      <action name = "consultaGeneral" 
+         class = "com.action.ConsultaAction" 
+         method = "executeG">
+         <result name = "input">/consultas/consultaG.jsp</result>
+         <result name = "next">/consultas/consultaExitosa.jsp</result>
+      </action>
+      
+        <!-- Add additional "example" package actions here. -->
+
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>
