@@ -53,7 +53,7 @@
        		  				<s:url action="movimientosIni" var="movimientosLink"></s:url>
 		  					<a class="dropdown-item" href="${movimientosLink}">Mis movimientos</a>
 		  					<s:url action="misTransferIni" var="misTransferLink"></s:url>
-		  					<a class="dropdown-item" href="${misTransferLink}">Consulta General</a>
+		  					<a class="dropdown-item" href="${misTransferLink}">Mis transferencias</a>
 	  					</div>
 	  				</li>
 	  				<li class="nav-item">
