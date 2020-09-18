@@ -34,7 +34,7 @@ INSERT INTO `test`.`cuenta` (`id`, `usuario`, `monto`)
 VALUES ('C002', 'Gamma', 1000);
 
 INSERT INTO `test`.`movimiento` (`id_cuenta`, `tipo`, `monto`, `fecha` )
-VALUES ('C001', 'Deposito', 500 , '2020-09-16
+VALUES ('C001', 'Deposito', 500 , '2020-09-16');
 INSERT INTO `test`.`movimiento` (`id_cuenta`, `tipo`, `monto`, `fecha` )
 VALUES ('C002', 'Deposito', 1000 , '2020-09-16');
 INSERT INTO `test`.`movimiento` (`id_cuenta`, `tipo`, `monto`, `fecha` )
