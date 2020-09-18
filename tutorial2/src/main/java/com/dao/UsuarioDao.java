@@ -37,11 +37,13 @@ public class UsuarioDao {
      ps.setString(1, usuario.getUsuario());
      ps.setString(2, usuario.getPassword());
      ResultSet rs = ps.executeQuery();
+     System.out.println("Valor de usuario: "+usuario.getUsuario());
+     System.out.println("Valor de password: "+usuario.getPassword());
 
      // Esta linea trae la tabla resultante del query
      while (rs.next()) {
         usuario.setNombre(rs.getString(1));
-        ret = "success";
+        ret = "next";
      }
 
      if (conn != null) {
@@ -199,7 +201,6 @@ public class UsuarioDao {
 	   
 	}
 	
-	
 	public String validacionUsuario() throws Exception
 	{
 	 String ret = "error";
@@ -232,6 +233,8 @@ public class UsuarioDao {
       
       return ret;
 	}
+	
+	
 	public String cambioUsuario() throws Exception
 	{
 	 String ret = "error";

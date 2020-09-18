@@ -1,3 +1,4 @@
+<%@ taglib prefix = "s" uri = "/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,19 @@
 	<s:form action="alta">
 		<p>Usuario: </p>
       <s:textfield name="usuario.usuario"  required="true" />
+      
       	<p>Password: </p>
-      <s:textfield name="usuario.password"   required="true" /> 
-      	<p>Nombre: </p>
-       <s:textfield name="usuario.nombre" required="true" /> 
+      <s:textfield name="usuario.password"  required="true" />
+      
+      	<p>Password: </p>
+      <s:textfield  required="true" /> 
+      
+      	<p>Id de la cuenta: </p>
+      <s:textfield  name="cuenta.id"  required="true" /> 
+      
+      	<p>Monto: </p>
+      <s:textfield  name="cuenta.monto"  required="true" /> 
+      
       <s:submit value="Enviar"/>
      </s:form> 
 </body>
