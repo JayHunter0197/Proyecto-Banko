@@ -78,5 +78,49 @@ public class CuentaDao {
 
         return ret;
     }
+    
+    public String bajaCuenta() throws Exception {
+        String ret = "error";
+        String userDB= "";
+        String passwordDB= "";
+        Conexion conexion = new Conexion();
+        Connection conn = null;
+        conexion.establishConnection();
+        conn = conexion.getCon();
+        
+        String sql = "SELECT user, password FROM login WHERE";
+        sql+=" user = ? AND password = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, usuario.getUsuario());
+        ps.setString(2, usuario.getPassword());
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Valor de usuario: "+usuario.getUsuario());
+        System.out.println("Valor de password: "+usuario.getPassword());
+        
+        while (rs.next()) {
+       	 userDB = rs.getString(1);
+       	 passwordDB = rs.getString(2);
+        }
+        
+        if(( passwordDB.equals(usuario.getPassword())) && (userDB.equals(usuario.getUsuario())))
+        {
+       	 String sqlInsert = "DELETE FROM test.cuenta WHERE id = ? ";
+            ps = conn.prepareStatement(sqlInsert);
+            ps.setString(1, cuenta.getId());
+            ps.executeUpdate();
+            System.out.println("Valor de usuario: "+cuenta.getId());
+            ret = "next";
+        }
+
+        if (conn != null) {
+            try {
+                conexion.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return ret;
+    }
 
 }

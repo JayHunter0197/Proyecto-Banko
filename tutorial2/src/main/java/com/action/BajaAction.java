@@ -1,15 +1,25 @@
 package com.action;
 
+import com.business.Cuenta;
 import com.business.Usuario;
-import com.dao.UsuarioDao;
+import com.dao.CuentaDao;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BajaAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	   private Usuario usuario;
+	   private Cuenta cuenta;
 	   
-	   public Usuario getUsuario() {
+	   public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public Usuario getUsuario() {
 	      return usuario;
 	   }
 
@@ -24,13 +34,14 @@ public class BajaAction extends ActionSupport {
 	   public String execute()
 	   {
 		   String ret = ERROR;
-		   UsuarioDao userDao = new UsuarioDao();
-		   userDao.setUsuario(usuario); 
+		   CuentaDao cuentaDao = new CuentaDao();
+		   cuentaDao.setUsuario(usuario);
+		   cuentaDao.setCuenta(cuenta);
 		    
 		   try 
 		   {
 			   
-			   ret = userDao.bajaUsuario();
+			   ret = cuentaDao.bajaCuenta();
 		   }
 		   
 		   catch (Exception e)

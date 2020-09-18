@@ -31,6 +31,21 @@
          <result name = "error">/error.jsp</result>
       </action>
       
+      <action name = "bajaIni" 
+         class = "com.action.BajaAction" 
+         method = "init">
+         <result name= "input"> index.jsp </result>
+         <result name = "next">/bajas/bajaIni.jsp</result>
+      </action>
+      
+       <action name = "baja" 
+         class = "com.action.BajaAction" 
+         method = "execute">
+         <result name = "input">/bajas/bajaIni.jsp</result>
+         <result name = "next">/bajas/bajaExitosa.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
       
         <!-- Add additional "example" package actions here. -->
 

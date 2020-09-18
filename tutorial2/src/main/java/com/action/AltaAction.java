@@ -3,7 +3,6 @@ package com.action;
 import com.business.Cuenta;
 import com.business.Usuario;
 import com.dao.CuentaDao;
-import com.dao.UsuarioDao;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AltaAction extends ActionSupport {
@@ -34,7 +33,7 @@ public class AltaAction extends ActionSupport {
 	   
 	   public String validation() {
 	      String ret = ERROR;
-		  UsuarioDao userDao = new UsuarioDao();
+		 
 		  
 		  CuentaDao cuentaDao = new CuentaDao();
 		  cuentaDao.setUsuario(usuario);

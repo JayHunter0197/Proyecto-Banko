@@ -37,8 +37,8 @@ public class UsuarioDao {
      ps.setString(1, usuario.getUsuario());
      ps.setString(2, usuario.getPassword());
      ResultSet rs = ps.executeQuery();
-     System.out.println("Valor de usuario: "+usuario.getUsuario());
-     System.out.println("Valor de password: "+usuario.getPassword());
+     //System.out.println("Valor de usuario: "+usuario.getUsuario());
+     //System.out.println("Valor de password: "+usuario.getPassword());
 
      // Esta linea trae la tabla resultante del query
      while (rs.next()) {
