@@ -3,6 +3,7 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.utils.Conexion;
 import com.business.Cuenta;
@@ -33,13 +34,14 @@ public class CuentaDao {
 
     public String altaCuenta() throws Exception {
         String ret = "error";
-        boolean found = false;
+        String userDB= "";
+        String passwordDB= "";
         Conexion conexion = new Conexion();
         Connection conn = null;
         conexion.establishConnection();
         conn = conexion.getCon();
 
-        String sql = "SELECT name FROM login WHERE";
+        String sql = "SELECT user, password FROM login WHERE";
         sql += " user = ? AND password = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, usuario.getUsuario());
@@ -50,10 +52,12 @@ public class CuentaDao {
 
 
         while (rs.next()) {
-            found = true;
+        	userDB = rs.getString(1);
+          	 passwordDB = rs.getString(2);
         }
 
-        if (found == true) {
+        if(( passwordDB.equals(usuario.getPassword())) && (userDB.equals(usuario.getUsuario())))
+        {
             String sqlInsert = "INSERT INTO test.cuenta (id, usuario, monto) ";
             sqlInsert += "VALUES (?, ?, ?)";
             ps = conn.prepareStatement(sqlInsert);
@@ -88,6 +92,7 @@ public class CuentaDao {
         conexion.establishConnection();
         conn = conexion.getCon();
         
+       
         String sql = "SELECT user, password FROM login WHERE";
         sql+=" user = ? AND password = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -122,5 +127,64 @@ public class CuentaDao {
 
         return ret;
     }
+    
+    
+    public ArrayList<Cuenta> balance() throws Exception {
+    	
+    	ArrayList<Cuenta> list = new ArrayList<Cuenta>();
+    	String userDB= "";
+        String passwordDB= "";
+        Conexion conexion = new Conexion();
+        Connection conn = null;
+        conexion.establishConnection();
+        conn = conexion.getCon();
+        
+
+        String sql = "SELECT user, password FROM login WHERE";
+        sql += " user = ? AND password = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, usuario.getUsuario());
+        ps.setString(2, usuario.getPassword());
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Valor de usuario: "+usuario.getUsuario());
+        System.out.println("Valor de password: "+usuario.getPassword());
+
+
+        while (rs.next()) {
+        	userDB = rs.getString(1);
+          	 passwordDB = rs.getString(2);
+        }
+        
+        if(( passwordDB.equals(usuario.getPassword())) && (userDB.equals(usuario.getUsuario())))
+        {
+
+            String sqlInsert = "SELECT * FROM cuenta WHERE";
+    	     sqlInsert+=" id = ? ";
+    	     ps = conn.prepareStatement(sqlInsert);
+    	     ps.setString(1, cuenta.getId());
+    	     rs = ps.executeQuery();
+    	     
+    	     while (rs.next()) {
+    	        	Cuenta account = new Cuenta();
+    	        	account.setId(rs.getString(1));
+    	        	account.setUsuario(rs.getString(2));
+    	        	account.setMonto(rs.getFloat(3));
+    	           list.add(account);
+    	        }
+        }
+        
+      
+
+        if (conn != null) {
+            try {
+                conexion.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
+    
 
 }

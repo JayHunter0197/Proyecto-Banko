@@ -165,7 +165,7 @@ public class UsuarioDao {
 	
 	public ArrayList<Usuario> consultaUsuario() throws Exception
 	{
-		ArrayList<Usuario> list = new ArrayList<Usuario>();
+		 ArrayList<Usuario> list = new ArrayList<Usuario>();
 		 Conexion conexion = new Conexion();
 	     Connection conn = null;
 		 conexion.establishConnection();

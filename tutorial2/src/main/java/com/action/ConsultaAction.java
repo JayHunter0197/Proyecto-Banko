@@ -3,69 +3,71 @@ package com.action;
 import java.util.Collection;
 import java.util.List;
 
+import com.business.Cuenta;
 import com.business.Usuario;
+import com.dao.CuentaDao;
 import com.dao.UsuarioDao;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ConsultaAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
+	
 	   private Usuario usuario;
-	   public Collection<Usuario> list; 
+	   private Cuenta cuenta;
 	   
-	   public Collection<Usuario> getList() {
+	   public Collection<Cuenta> list; 
+	   
+	   public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+
+	public Collection<Cuenta> getList() {
 			return list;
 		}
 
 
-		public void setList(List<Usuario> list) {
+
+		public void setList(List<Cuenta> list) {
 			this.list = list;
 		}
 	   
-	   public Usuario getUsuario() {
-	      return usuario;
-	   }
+		public Usuario getUsuario() {
+			return usuario;
+		}
 
-	   public void setUsuario(Usuario usuario) {
-	      this.usuario = usuario;
-	   }
+
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
+		}
+	   
 	   
 	   public String init(){
 			return "next";
 		}
 	   
-	   // Consulta General 
-	   public String executeG() throws Exception
-	   {
-		 
-		   
-		   UsuarioDao userDao = new UsuarioDao();
-		   userDao.setUsuario(usuario); 
-		   
-		   try
-		   {
-			   list = userDao.consultaUsuarios();
-			   return "next";
-		   }
-		   
-		   catch (Exception e)
-		   {
-			   e.printStackTrace();
-		       return "error";
-		   }
-		     
-	   }
 	   
 	// Consulta  Particular
-	   public String executeP()
+	   public String execute()
 	   {
-		   
-		   UsuarioDao userDao = new UsuarioDao();
-		   userDao.setUsuario(usuario); 
+	
+		   CuentaDao cuentaDao = new CuentaDao();
+		   cuentaDao.setUsuario(usuario);
+		   cuentaDao.setCuenta(cuenta);
 		    
 		   try 
 		   {
-			   list = userDao.consultaUsuario();
+			   list = cuentaDao.balance();
+			   if (list.isEmpty())
+			   {
+				   return "error";
+			   }
 			   return "next";
 		   }
 		  

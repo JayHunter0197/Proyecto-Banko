@@ -46,6 +46,21 @@
          <result name = "error">/error.jsp</result>
       </action>
       
+        <action name = "balanceIni" 
+         class = "com.action.ConsultaAction" 
+         method = "init">
+          <result name = "input">index.jsp</result>
+         <result name = "next">/balance/balanceIni.jsp</result>
+      </action>
+      
+      <action name = "balance" 
+         class = "com.action.ConsultaAction" 
+         method = "execute">
+         <result name = "input">/balance/balanceIni.jsp</result>
+         <result name = "next">/balance/balanceExitoso.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
       
         <!-- Add additional "example" package actions here. -->
 
