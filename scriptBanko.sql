@@ -9,7 +9,7 @@ CREATE TABLE `test`.`cuenta` (
 CREATE TABLE `test`.`transferencia` (
   `id` INT  NOT NULL AUTO_INCREMENT,
   `id_cuenta_1` VARCHAR(50) NOT NULL,
-  `Id_cuenta_2` VARCHAR(50) NOT NULL,
+  `id_cuenta_2` VARCHAR(50) NOT NULL,
   `monto` FLOAT NOT NULL,
   `fecha` DATE NOT NULL,
   PRIMARY KEY (`id`),

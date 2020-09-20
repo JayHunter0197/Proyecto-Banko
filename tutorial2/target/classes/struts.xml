@@ -61,6 +61,21 @@
          <result name = "error">/error.jsp</result>
       </action>
       
+      <action name = "transferIni" 
+         class = "com.action.TransferenciaAction" 
+         method = "init">
+         <result name = "input">/index.jsp</result>
+         <result name = "next">/transferencias/transferenciaIni.jsp</result>
+      </action>
+      
+       <action name = "transferir" 
+         class = "com.action.TransferenciaAction" 
+         method = "execute">
+         <result name = "input">/transferencias/transferenciaIni.jsp</result>
+         <result name = "next">/transferencias/transferenciaExitosa.jsp</result>
+         <result name = "error">/error.jsp</result>
+      </action>
+      
       
         <!-- Add additional "example" package actions here. -->
 
