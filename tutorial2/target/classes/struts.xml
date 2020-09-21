@@ -77,6 +77,36 @@
       </action>
       
       
+      
+      <action name = "movimientosIni" 
+         class = "com.action.ConsultaAction" 
+         method = "init">
+         <result name = "error">/consultas/consultaG.jsp</result>
+         <result name = "next">/movimientos/movimientoIni.jsp</result>
+      </action>
+
+	  <action name = "movimientos" 
+         class = "com.action.ConsultaAction" 
+         method = "executeM">
+         <result name = "error">/consultas/consultaG.jsp</result>
+         <result name = "success">/consultas/consultaMovimientosExitosa.jsp</result>
+      </action>
+
+	<action name = "misTransferIni" 
+         class = "com.action.ConsultaAction" 
+         method = "init">
+         <result name = "error">/consultas/consultaG.jsp</result>
+         <result name = "next">/transferencias/consultaTransferenciasIni.jsp</result>
+      </action>
+
+	  <action name = "consultarTransferencias" 
+         class = "com.action.ConsultaAction" 
+         method = "executeT">
+         <result name = "error">/consultas/consultaG.jsp</result>
+         <result name = "success">/consultas/consultaTransferenciasExitosa.jsp</result>
+      </action>
+      
+      
         <!-- Add additional "example" package actions here. -->
 
     </package>

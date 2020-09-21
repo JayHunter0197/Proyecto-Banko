@@ -20,50 +20,68 @@
     <script src="js/script.min.js"></script>
   	
 </head>
+
+<style>
+ .nav{
+ 	font-size:20px;
+ 	background-color:#6ec62f;
+ }
+ 
+
+</style>
+
 <body>
-	<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Banko</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item">
-                    	 <s:url action="altaIni" var="altaLinkPrueba"></s:url>
-                    	<a class="nav-link active" href="${altaLinkPrueba}">Nueva Cuenta</a>
-                    </li>
-                    <li class="nav-item">
-                    	 <s:url action="balanceIni" var="balanceLink"></s:url>
-                    	<a class="nav-link active" href="${balanceLink}">Balance</a>
-                    </li>
-                    <li class="nav-item">
-                    	 <s:url action="depositoIni" var="depositoLink"></s:url>
-                    	<a class="nav-link active" href="${depositoLink}">Deposito</a>
-                    </li>
-                    <li class="nav-item">
-                    	 <s:url action="retiroIni" var="retiroLink"></s:url>
-                    	<a class="nav-link active" href="${retiroLink}">Retiro</a>
-                    </li>
-                    <li class="nav-item">
-                    	 <s:url action="transferIni" var="transferLink"></s:url>
-                    	<a class="nav-link active" href="${transferLink}">Transferencia</a>
-                    </li>
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                   	 	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Movimientos</a>
+	<div class="container-fluid">
+		<div class="row row-no-padding">
+		  
+		    <img src="images/Apto.png" class="mx-auto d-block img-fluid">
+		  
+     	</div>
+     	
+     	<div class="row row-no-padding">
+     		<div class="col-md-12 col-lg-12 p-0 m-0">
+     			<ul class="nav justify-content-center nav-fill">
+				  <li class="nav-item">
+				    <s:url action="altaIni" var="altaLinkPrueba"></s:url>
+                    <a class="nav-link active text-light" href="${altaLinkPrueba}">Nueva Cuenta</a>
+				  </li>
+				  <li class="nav-item">
+				     <s:url action="balanceIni" var="balanceLink"></s:url>
+                    	<a class="nav-link active text-light" href="${balanceLink}">Balance</a>
+				  </li>
+				  <li class="nav-item">
+				     <s:url action="depositoIni" var="depositoLink"></s:url>
+                    	<a class="nav-link active text-light" href="${depositoLink}">Deposito</a>
+				  </li>
+				  <li class="nav-item">
+				    <s:url action="retiroIni" var="retiroLink"></s:url>
+                    	<a class="nav-link active text-light" href="${retiroLink}">Retiro</a>
+				  </li>
+				  <li class="nav-item">
+				     <s:url action="transferIni" var="transferLink"></s:url>
+                    	<a class="nav-link active text-light" href="${transferLink}">Transferencia</a>
+				  </li>
+				  
+				  <li class="nav-item dropdown">
+                   	 	<a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">Consultas</a>
 	       			 	<div class="dropdown-menu">
        		  				<s:url action="movimientosIni" var="movimientosLink"></s:url>
-		  					<a class="dropdown-item" href="${movimientosLink}">Mis movimientos</a>
+		  					<a class="dropdown-item text-dark" href="${movimientosLink}">Mis movimientos</a>
 		  					<s:url action="misTransferIni" var="misTransferLink"></s:url>
-		  					<a class="dropdown-item" href="${misTransferLink}">Mis transferencias</a>
+		  					<a class="dropdown-item text-dark" href="${misTransferLink}">Mis transferencias</a>
 	  					</div>
 	  				</li>
 	  				<li class="nav-item">
                     	 <s:url action="bajaIni" var="bajaLink"></s:url>
-                    	<a class="nav-link active" href="${bajaLink}">Cerrar cuenta</a>
+                    	<a class="nav-link active text-light" href="${bajaLink}">Cerrar cuenta</a>
                     </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+				</ul>
+     		
+     		</div>
+     		
+     	</div>
+   </div>
+	
 
 </body>
 

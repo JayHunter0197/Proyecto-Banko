@@ -5,8 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-
+import com.business.Cuenta;
 import com.business.Transferencia;
 import com.business.Usuario;
 import com.utils.Conexion;
@@ -15,18 +16,20 @@ import com.utils.Conexion;
 
 	public class TransferenciaDao {
 	
-	  private Transferencia transsferencia;
 	  private Usuario usuario;
-	    
+	  private Cuenta cuenta;
+	  private Transferencia transferencia;
 	
 	
-	public Transferencia getTranssferencia() {
-			return transsferencia;
-		}
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
 
-		public void setTranssferencia(Transferencia transsferencia) {
-			this.transsferencia = transsferencia;
-		}
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+
 
 		public Usuario getUsuario() {
 			return usuario;
@@ -36,7 +39,6 @@ import com.utils.Conexion;
 			this.usuario = usuario;
 		}
 
-	private Transferencia transferencia;
 
 	public Transferencia getTransferencia() {
 		return transferencia;
@@ -45,6 +47,67 @@ import com.utils.Conexion;
 	public void setTransferencia(Transferencia transferencia) {
 		this.transferencia = transferencia;
 	}
+	
+	
+	
+public ArrayList<Transferencia> consultarTransferencias() throws Exception {
+    	
+    	ArrayList<Transferencia> listaTransferencias = new ArrayList<Transferencia>();
+    	String userDB= "";
+        String passwordDB= "";
+        Conexion conexion = new Conexion();
+        Connection conn = null;
+        conexion.establishConnection();
+        conn = conexion.getCon();
+        
+
+        String sql = "SELECT user, password FROM login WHERE";
+        sql += " user = ? AND password = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, usuario.getUsuario());
+        ps.setString(2, usuario.getPassword());
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Valor de usuario: "+usuario.getUsuario());
+        System.out.println("Valor de password: "+usuario.getPassword());
+
+
+        while (rs.next()) {
+        	userDB = rs.getString(1);
+          	 passwordDB = rs.getString(2);
+        }
+        
+        if(( passwordDB.equals(usuario.getPassword())) && (userDB.equals(usuario.getUsuario())))
+        {
+
+            String query = "SELECT * FROM transferencia WHERE";
+    	     query+=" id_cuenta_1 = ? ";
+    	     ps = conn.prepareStatement(query);
+    	     ps.setString(1, cuenta.getId());
+    	     rs = ps.executeQuery();
+    	     
+    	     while (rs.next()) {
+    	    	 	Transferencia transfer= new Transferencia();
+    	    	 	transfer.setId(rs.getInt(1));
+    	    	 	transfer.setIdCuenta1(rs.getNString(2));
+    	    	 	transfer.setIdCuenta2(rs.getNString(3));
+    	    	 	transfer.setMonto(rs.getFloat(4));
+    	    	 	transfer.setFecha(rs.getDate(5));
+		            listaTransferencias.add(transfer);
+    	        }
+        }
+        
+      
+
+        if (conn != null) {
+            try {
+                conexion.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return listaTransferencias;
+    }
 	
 	
 	public String transferir() throws Exception {
