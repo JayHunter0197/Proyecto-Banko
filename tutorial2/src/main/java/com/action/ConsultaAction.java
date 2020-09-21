@@ -54,7 +54,7 @@ public class ConsultaAction extends ActionSupport {
 	   
 	   
 	// Consulta  Particular
-	   public String execute()
+	   public String executeB()
 	   {
 	
 		   CuentaDao cuentaDao = new CuentaDao();

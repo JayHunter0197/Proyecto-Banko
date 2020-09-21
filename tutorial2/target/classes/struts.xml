@@ -55,7 +55,7 @@
       
       <action name = "balance" 
          class = "com.action.ConsultaAction" 
-         method = "execute">
+         method = "executeB">
          <result name = "input">/balance/balanceIni.jsp</result>
          <result name = "next">/balance/balanceExitoso.jsp</result>
          <result name = "error">/error.jsp</result>
