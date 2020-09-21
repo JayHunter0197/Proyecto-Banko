@@ -14,7 +14,7 @@
 				<tr>
 					<th>ID cuenta</th>
 					<th>Usuario</th>
-					<th>Nombre</th>
+					<th>Monto</th>
 				</tr>
 			</thead>
 			<tbody>
