@@ -106,6 +106,44 @@
          <result name = "success">/consultas/consultaTransferenciasExitosa.jsp</result>
       </action>
       
+      <action name = "depositoIni" 
+			class = "com.action.DepositoAction" 
+			method = "init">
+			<result name= "input"> index.jsp </result>
+			<result name = "next">/depositos/depositoIni.jsp</result>
+		</action>
+      
+       <action name = "deposito" 
+			class = "com.action.DepositoAction" 
+			method = "execute">
+			<param name="cuenta"></param>
+			<param name="user"></param>
+			<param name="password"></param>
+			<param name="monto"></param>
+			<result name = "input">/depositos/depositoIni.jsp</result>
+			<result name = "next">/depositos/depositoExitoso.jsp</result>
+			<result name = "error">/error.jsp</result>
+      </action>
+
+		<action name = "retiroIni" 
+			class = "com.action.RetiroAction" 
+			method = "init">
+			<result name= "input"> index.jsp </result>
+			<result name = "next">/retiros/retiroIni.jsp</result>
+		</action>
+
+	  <action name = "retiro" 
+			class = "com.action.RetiroAction" 
+			method = "execute">
+			<param name="cuenta"></param>
+			<param name="user"></param>
+			<param name="password"></param>
+			<param name="monto"></param>
+			<result name = "input">/retiros/retiroIni.jsp</result>
+			<result name = "next">/retiros/retiroExitoso.jsp</result>
+			<result name = "error">/error.jsp</result>
+      </action>
+      
       
         <!-- Add additional "example" package actions here. -->
 
